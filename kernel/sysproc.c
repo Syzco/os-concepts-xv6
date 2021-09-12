@@ -7,6 +7,7 @@
 #include "sysfunc.h"
 
 int partACounter = 0;
+extern int partBCounter;
 
 int
 sys_fork(void)
@@ -45,10 +46,16 @@ sys_getpid(void)
   return proc->pid;
 }
 
+//Mini Project 1 Part A and B
 int
 sys_partA(void)
 {
      return partACounter;
+}
+int
+sys_partB(void)
+{
+     return partBCounter;
 }
 
 int

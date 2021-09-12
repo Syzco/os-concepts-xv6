@@ -14,11 +14,12 @@ USER_PROGS := \
 	sh\
 	stressfs\
 	tester\
-	tester1\
-	tester2\
 	usertests\
 	wc\
-	zombie
+	zombie\
+	mp1-helpa\
+	mp1-testa\
+	mp1-testb
 
 USER_PROGS := $(addprefix user/, $(USER_PROGS))
 

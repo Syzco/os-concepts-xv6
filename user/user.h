@@ -25,7 +25,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+
+//Mini Project 1 Part A and B.
 int partA(void);
+int partB(void);
 
 // user library functions (ulib.c)
 int stat(char*, struct stat*);

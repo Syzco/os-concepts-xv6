@@ -138,6 +138,8 @@ int             argstr(int, char**);
 int             fetchint(struct proc*, uint, int*);
 int             fetchstr(struct proc*, uint, char**);
 void            syscall(void);
+//   Mini Project 1 Part B Counter from syscall.c
+int             partBCounter;
 
 // timer.c
 void            timerinit(void);
