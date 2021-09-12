@@ -4,7 +4,9 @@
 
 // running system call PartB()
 int
-main(void){
+main(void)
+{
      printf(1, "There are %d system calls.\n", partB());
      exit();
 }
+
