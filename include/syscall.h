@@ -28,4 +28,7 @@
 #define SYS_partA  22
 #define SYS_partB  23
 
+//Mini Project 2
+#define SYS_getpinfo 24
+
 #endif // _SYSCALL_H_
