@@ -110,7 +110,6 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
-
 //Mini Project 2
 void settickets(void);
 int getpinfo(struct pstat*);
