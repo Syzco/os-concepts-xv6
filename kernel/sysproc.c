@@ -105,3 +105,13 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+//Mini Project 2
+int
+sys_getpinfo(void)
+{
+     struct pstat *pTable;
+     unsigned int number = (unsigned int)&pTable;
+
+     return number;
+}
