@@ -263,9 +263,10 @@ int wait(void)
      }
 }
 
-int getTicketCount(struct proc *p)
+int getTicketCount()
 {
      int totalTickets;
+     struct proc *p;
      for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
      {
           if (p->state != RUNNABLE)
@@ -301,7 +302,7 @@ void scheduler(void)
           //Mini Project 2
           int lotteryWinner = 0;
           int totalTickets = 0;
-          //int counter = 0;
+          int counter = 0;
 
           // Enable interrupts on this processor.
           sti();
@@ -310,12 +311,18 @@ void scheduler(void)
           acquire(&ptable.lock);
 
           //Mini Project 2 - Calculate Winner
-          totalTickets = getTicketCount(p);
+          for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+          {
+               if (p->state != RUNNABLE)
+               {
+                    continue;
+               }
 
-          lotteryWinner = getLotteryWinner(totalTickets);
+               totalTickets = totalTickets + p->numTickets;
+          }
 
-          if (!lotteryWinner || !totalTickets) {
-               continue;
+          if (totalTickets > 0) {
+               lotteryWinner = ((rand() % totalTickets) + 1);
           }
 
           for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
@@ -325,11 +332,12 @@ void scheduler(void)
                     continue;
                }
 
-               /*if (counter < lotteryWinner)
+               counter = counter + p->numTickets;
+
+               if (counter < lotteryWinner)
                {
-                    counter = counter + p->numTickets;
                     continue;
-               }*/
+               }
 
                // Switch to chosen process.  It is the process's job
                // to release ptable.lock and then reacquire it
@@ -344,7 +352,7 @@ void scheduler(void)
                // Process is done running for now.
                // It should have changed its p->state before coming back.
                proc = 0;
-               //break;
+               break;
           }
           release(&ptable.lock);
      }
