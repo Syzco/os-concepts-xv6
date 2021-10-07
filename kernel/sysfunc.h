@@ -28,4 +28,8 @@ int sys_uptime(void);
 int sys_partA(void);
 int sys_partB(void);
 
+//Mini Project 2
+int sys_getpinfo(void);
+int sys_settickets(void);
+
 #endif // _SYSFUNC_H_

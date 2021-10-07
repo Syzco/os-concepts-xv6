@@ -33,3 +33,7 @@ SYSCALL(uptime)
 //Mini Project 1 Part A and B
 SYSCALL(partA)
 SYSCALL(partB)
+
+//Mini Project 2
+SYSCALL(getpinfo)
+SYSCALL(settickets)

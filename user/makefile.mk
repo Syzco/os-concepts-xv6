@@ -19,7 +19,9 @@ USER_PROGS := \
 	zombie\
 	mp1-helpa\
 	mp1-testa\
-	mp1-testb
+	mp1-testb\
+	readingpstat\
+	tickettest
 
 USER_PROGS := $(addprefix user/, $(USER_PROGS))
 

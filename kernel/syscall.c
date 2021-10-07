@@ -110,6 +110,7 @@ static int (*syscalls[])(void) = {
 [SYS_partB]   sys_partB,
 //Mini Project 2
 [SYS_getpinfo] sys_getpinfo,
+[SYS_settickets] sys_settickets,
 };
 
 // Called on a syscall trap. Checks that the syscall number (passed via eax)

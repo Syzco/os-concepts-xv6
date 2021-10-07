@@ -30,5 +30,6 @@
 
 //Mini Project 2
 #define SYS_getpinfo 24
+#define SYS_settickets 25
 
 #endif // _SYSCALL_H_
