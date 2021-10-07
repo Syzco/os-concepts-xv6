@@ -50,7 +50,7 @@ found:
 
      //Mini Project 2
      p->numTicks = 0;
-     p->numTickets = 10;
+     p->numTickets = 1;
 
      release(&ptable.lock);
 
@@ -261,28 +261,6 @@ int wait(void)
           // Wait for children to exit.  (See wakeup1 call in proc_exit.)
           sleep(proc, &ptable.lock); //DOC: wait-sleep
      }
-}
-
-int getTicketCount()
-{
-     int totalTickets;
-     struct proc *p;
-     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-     {
-          if (p->state != RUNNABLE)
-          {
-               continue;
-          }
-
-          totalTickets = totalTickets + p->numTickets;
-     }
-
-     return totalTickets;
-}
-
-int getLotteryWinner(int ticketCount)
-{
-     return (rand() % ticketCount + 1);
 }
 
 // Per-CPU process scheduler.
@@ -548,7 +526,7 @@ int getpinfo(struct pstat *LaTable)
 
 int settickets(int tickets)
 {
-     if (tickets > 1) {
+     if (tickets < 1) {
           return -1;
      }
 
