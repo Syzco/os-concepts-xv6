@@ -263,40 +263,6 @@ int wait(void)
      }
 }
 
-/**
- * Mini Project 2 - Helper Functions
- *
- * @method getTotalTickets()
- * @description Get the total number of tickets of all runnable processes.
- * @return Total Tickets of Runnable Processes (int)
- *
- * @method getLotteryWinnder()
- * @param totalTickets (int)
- * @description Calculate the lottery winner of random chance.
- * @return lottery winner number (int)
-**/
-
-int getTotalTickets()
-{
-     int totalTickets;
-     struct proc *p;
-     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-     {
-          if (p->state != RUNNABLE)
-          {
-               continue;
-          }
-
-          totalTickets = totalTickets + p->numTickets;
-     }
-     return totalTickets;
-}
-
-int getLotteryWinner(int totalTickets)
-{
-     return ((rand() % totalTickets) + 1);
-}
-
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:
@@ -323,12 +289,20 @@ void scheduler(void)
           acquire(&ptable.lock);
 
           // MP2 - Calculate total tickets.
-          totalTickets = getTotalTickets();
+          for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+          {
+               if (p->state != RUNNABLE)
+               {
+                    continue;
+               }
+
+               totalTickets = totalTickets + p->numTickets;
+          }
 
           // MP2 - Check if multiple processes.
           if (totalTickets > 0) {
-               // MP2: Calcualte the lottery winner.
-               lotteryWinner = getLotteryWinner(totalTickets);
+               // MP2: Calcualte the lottery winner.;
+               lotteryWinner = ((rand() % totalTickets) + 1);
           }
 
           for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
