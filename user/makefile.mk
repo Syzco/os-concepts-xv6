@@ -1,5 +1,6 @@
 
 # user programs
+# MP2 - Add the tester files to the user programs. (tester1 and tester2)
 USER_PROGS := \
 	cat\
 	echo\
@@ -22,7 +23,6 @@ USER_PROGS := \
 	mp1-testb\
 	readingpstat\
 	tickettest\
-# MP2 - Add the tester files to the user programs.
 	tester1\
 	tester2
 

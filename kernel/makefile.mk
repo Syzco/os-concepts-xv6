@@ -1,5 +1,6 @@
 
 # Kernel objects
+# MP2 - Add the random function (rand.o) to the compile list.
 KERNEL_OBJECTS := \
 	bio.o\
 	console.o\
@@ -16,7 +17,6 @@ KERNEL_OBJECTS := \
 	picirq.o\
 	pipe.o\
 	proc.o\
-	# MP2 - Add the random function to the compile list.
 	rand.o\
 	spinlock.o\
 	string.o\
