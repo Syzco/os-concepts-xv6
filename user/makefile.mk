@@ -22,6 +22,7 @@ USER_PROGS := \
 	mp1-testb\
 	readingpstat\
 	tickettest\
+# MP2 - Add the tester files to the user programs.
 	tester1\
 	tester2
 

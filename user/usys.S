@@ -34,6 +34,6 @@ SYSCALL(uptime)
 SYSCALL(partA)
 SYSCALL(partB)
 
-//Mini Project 2
+// MP2 - Add the methods to the system calls of the user.
 SYSCALL(getpinfo)
 SYSCALL(settickets)

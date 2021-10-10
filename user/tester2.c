@@ -1,3 +1,7 @@
+/**
+ * This file is used to display a tablized view of the current processes and their statistics.
+**/
+
 #include "types.h"
 #include "stat.h"
 #include "user.h"

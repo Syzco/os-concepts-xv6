@@ -1,3 +1,8 @@
+/**
+ * This file is used to spawn children processes and set their ticket counts.
+ * The children live forever, as it processes an infinite loop.
+**/
+
 #include "types.h"
 #include "stat.h"
 #include "user.h"

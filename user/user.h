@@ -31,7 +31,7 @@ int uptime(void);
 int partA(void);
 int partB(void);
 
-//Mini Project 2
+// MP2 - Define the methods on the user.
 int getpinfo(struct pstat*);
 int settickets(int);
 
