@@ -21,10 +21,8 @@ USER_PROGS := \
 	mp1-helpa\
 	mp1-testa\
 	mp1-testb\
-	readingpstat\
-	tickettest\
-	tester1\
-	tester2
+	mp2-test1\
+	mp2-test2
 
 USER_PROGS := $(addprefix user/, $(USER_PROGS))
 
