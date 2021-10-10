@@ -6,7 +6,7 @@
 #include "proc.h"
 #include "spinlock.h"
 #include "pstat.h"
-#include "rand.h"
+#include "rand.h" // MP2 - Include the random function.
 
 struct
 {
@@ -263,6 +263,40 @@ int wait(void)
      }
 }
 
+/**
+ * Mini Project 2 - Helper Functions
+ *
+ * @method getTotalTickets()
+ * @description Get the total number of tickets of all runnable processes.
+ * @return Total Tickets of Runnable Processes (int)
+ *
+ * @method getLotteryWinnder()
+ * @param totalTickets (int)
+ * @description Calculate the lottery winner of random chance.
+ * @return lottery winner number (int)
+**/
+
+int getTotalTickets()
+{
+     int totalTickets;
+     struct proc *p;
+     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+     {
+          if (p->state != RUNNABLE)
+          {
+               continue;
+          }
+
+          totalTickets = totalTickets + p->numTickets;
+     }
+     return totalTickets;
+}
+
+int getLotteryWinner(int totalTickets)
+{
+     return ((rand() % totalTickets) + 1);
+}
+
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:
@@ -277,7 +311,7 @@ void scheduler(void)
      for (;;)
      {
 
-          //Mini Project 2
+          // MP2 - Initialize Variables
           int lotteryWinner = 0;
           int totalTickets = 0;
           int counter = 0;
@@ -288,19 +322,13 @@ void scheduler(void)
           // Loop over process table looking for process to run.
           acquire(&ptable.lock);
 
-          //Mini Project 2 - Calculate Winner
-          for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-          {
-               if (p->state != RUNNABLE)
-               {
-                    continue;
-               }
+          // MP2 - Calculate total tickets.
+          totalTickets = getTotalTickets();
 
-               totalTickets = totalTickets + p->numTickets;
-          }
-
+          // MP2 - Check if multiple processes.
           if (totalTickets > 0) {
-               lotteryWinner = ((rand() % totalTickets) + 1);
+               // MP2: Calcualte the lottery winner.
+               lotteryWinner = getLotteryWinner(totalTickets);
           }
 
           for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
@@ -310,8 +338,10 @@ void scheduler(void)
                     continue;
                }
 
+               // MP2 - Increment the counter to add this process.
                counter = counter + p->numTickets;
 
+               // MP2 - Check if the process is the lottery winner.
                if (counter < lotteryWinner)
                {
                     continue;
