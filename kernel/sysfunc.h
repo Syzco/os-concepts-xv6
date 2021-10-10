@@ -28,7 +28,7 @@ int sys_uptime(void);
 int sys_partA(void);
 int sys_partB(void);
 
-//Mini Project 2
+// MP2 - Define system call handlers.
 int sys_getpinfo(void);
 int sys_settickets(void);
 

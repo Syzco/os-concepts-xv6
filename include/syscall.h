@@ -28,7 +28,7 @@
 #define SYS_partA  22
 #define SYS_partB  23
 
-//Mini Project 2
+// MP2 - Define the system call numbers.
 #define SYS_getpinfo 24
 #define SYS_settickets 25
 

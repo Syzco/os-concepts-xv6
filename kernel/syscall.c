@@ -108,7 +108,7 @@ static int (*syscalls[])(void) = {
 //Mini Project 1 Part A and B
 [SYS_partA]   sys_partA,
 [SYS_partB]   sys_partB,
-//Mini Project 2
+// MP2 - Adding the system call methods to the array of system calls.
 [SYS_getpinfo] sys_getpinfo,
 [SYS_settickets] sys_settickets,
 };

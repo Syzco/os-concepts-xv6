@@ -110,7 +110,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
-//Mini Project 2
+// MP2 - Define the system call methods.
 int settickets(int);
 int getpinfo(struct pstat*);
 

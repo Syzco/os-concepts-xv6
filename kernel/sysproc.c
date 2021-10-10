@@ -5,7 +5,7 @@
 #include "mmu.h"
 #include "proc.h"
 #include "sysfunc.h"
-#include "pstat.h"
+#include "pstat.h" // MP2 - Include the Process Structure
 
 int partACounter = 0;
 extern int partBCounter;
@@ -107,7 +107,17 @@ sys_uptime(void)
   return xticks;
 }
 
-//Mini Project 2
+/**
+ * Mini Project 2 - System Call Methods
+ *
+ * @method sys_getpinfo()
+ * @description System call for getting process information.
+ * @return 0 for pass, -1 for failure.
+ *
+ * @method sys_settickets()
+ * @description System call for setting tickets on a process.
+ * @return settickets() for pass, -1 for failure.
+**/
 int
 sys_getpinfo(void)
 {

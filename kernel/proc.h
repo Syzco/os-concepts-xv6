@@ -75,7 +75,7 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
 
-  //Mini Project 2
+  // MP2 - Add the varaibles to the process structure.
   int numTickets;              // Number of tickets of process
   int numTicks;                // Number of time schedule in CPU
 };

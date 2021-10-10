@@ -5,7 +5,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
-#include "pstat.h"
+#include "pstat.h" // MP2 - Incldue the process stat structure.
 #include "rand.h" // MP2 - Include the random function.
 
 struct
@@ -522,7 +522,19 @@ void procdump(void)
      }
 }
 
-//Mini Projet 2
+/**
+ * MP2 - Process Methods
+ *
+ * @method getpinfo()
+ * @param struct pstat *LaTable
+ * @description get the process informaiton.
+ * @return 0
+ *
+ * @method settickets()
+ * @param tickets (int)
+ * @descrption set the number of tickets on a process.
+ * @return 0 for pass, -1 for failure.
+**/
 int getpinfo(struct pstat *LaTable)
 {
      struct proc *p;
