@@ -301,7 +301,7 @@ void scheduler(void)
 
           // MP2 - Check if multiple processes.
           if (totalTickets > 0) {
-               // MP2: Calcualte the lottery winner.;
+               // MP2 - Calcualte the lottery winner.;
                lotteryWinner = ((rand() % totalTickets) + 1);
           }
 
