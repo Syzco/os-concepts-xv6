@@ -48,7 +48,7 @@ found:
      p->state = EMBRYO;
      p->pid = nextpid++;
 
-     //Mini Project 2
+     // MP2 - Initialize variables on process.
      p->numTicks = 0;
      p->numTickets = 1;
 
@@ -162,7 +162,7 @@ int fork(void)
                np->ofile[i] = filedup(proc->ofile[i]);
      np->cwd = idup(proc->cwd);
 
-     //Mini Project 2, give child tickets of parent.
+     // MP2 - Give child tickets of parent.
      np->numTickets = proc->numTickets;
 
      pid = np->pid;
