@@ -1,6 +1,7 @@
 
 # user programs
 # MP2 - Add the tester files to the user programs. (tester1 and tester2)
+# MP3 - Add the tester files to the user programs. (test1, test2, and test3)
 USER_PROGS := \
 	cat\
 	echo\
@@ -22,7 +23,8 @@ USER_PROGS := \
 	mp1-testa\
 	mp1-testb\
 	mp2-test1\
-	mp2-test2
+	mp2-test2\
+	mp3-test\
 
 USER_PROGS := $(addprefix user/, $(USER_PROGS))
 
@@ -79,7 +81,8 @@ USER_LDFLAGS += --omagic
 USER_LDFLAGS += --entry=main
 
 # location in memory where the program will be loaded
-USER_LDFLAGS += --section-start=.text=0x0
+# MP3 - Change the memory load location to 1000.
+USER_LDFLAGS += --section-start=.text=0x1000
 
 user/bin:
 	mkdir -p user/bin
