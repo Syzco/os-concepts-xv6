@@ -81,7 +81,7 @@ USER_LDFLAGS += --omagic
 USER_LDFLAGS += --entry=main
 
 # location in memory where the program will be loaded
-# MP3 - Change the memory load location to 1000.
+# MP3 - Change the memory load location to 4096 in hexadecimel 0x1000.
 USER_LDFLAGS += --section-start=.text=0x1000
 
 user/bin:

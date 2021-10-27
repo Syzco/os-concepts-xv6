@@ -307,6 +307,7 @@ copyuvm(pde_t *pgdir, uint sz)
 
      if ((d = setupkvm()) == 0)
           return 0;
+
      // MP3 - Set the initial value of i to the page size, so it skips the inital page.
      for (i = PGSIZE; i < sz; i += PGSIZE)
      {

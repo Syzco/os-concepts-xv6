@@ -18,9 +18,13 @@ int partBCounter = 0;
 // Fetch the int at addr from process p.
 int fetchint(struct proc *p, uint addr, int *ip)
 {
-     // MP3 - Check if the process id is greater than one and the address is less than the first page size.
-     if (addr >= p->sz || addr + 4 > p->sz || (p->pid > 1 && addr < PGSIZE))
+     if (addr >= p->sz || addr + 4 > p->sz)
           return -1;
+
+     // MP3 - Check if the process id is greater than one and the address is less than the first page size.
+     if (p->pid > 1 && addr < PGSIZE)
+          return -1;
+
      *ip = *(int *)(addr);
      return 0;
 }
@@ -32,9 +36,13 @@ int fetchstr(struct proc *p, uint addr, char **pp)
 {
      char *s, *ep;
 
-     // MP3 - Check if the process id is greater than one and the address is less than the first page size.
-     if (addr >= p->sz || addr == 0 || (p->pid > 1 && addr < PGSIZE))
+     if (addr >= p->sz || addr == 0)
           return -1;
+
+     // MP3 - Check if the process id is greater than one and the address is less than the first page size.
+     if (p->pid > 1 && addr < PGSIZE)
+          return -1;
+
      *pp = (char *)addr;
      ep = (char *)p->sz;
      for (s = *pp; s < ep; s++)
@@ -58,9 +66,13 @@ int argptr(int n, char **pp, int size)
 
      if (argint(n, &i) < 0)
           return -1;
-     // MP3 - Check that the pointer is not in the first page and does not exceed the size of the process.
-     if ((uint)i >= proc->sz || (uint)i + size > proc->sz || (proc->pid > 1 && ((uint)i) < PGSIZE) || (proc->pid > 1 && ((uint)i + size) > PGSIZE + proc->sz))
+     if ((uint)i >= proc->sz || (uint)i + size > proc->sz)
           return -1;
+
+     // MP3 - Check that the pointer is not in the first page and does not exceed the size of the process.
+     if (proc->pid > 1 && (((uint)i < PGSIZE) || ((uint)i + size) > (PGSIZE + proc->sz)))
+          return -1;
+
      *pp = (char *)i;
      return 0;
 }
