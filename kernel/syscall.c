@@ -71,7 +71,7 @@ int argptr(int n, char **pp, int size)
           return -1;
 
      // MP3 - Check that the pointer is not in the first page and does not exceed the size of the process.
-     if (proc->pid > 1 && (((uint)i < PGSIZE) || ((uint)i + size) > (PGSIZE + proc->sz)))
+     if (proc->pid > 1 && (uint)i < PGSIZE)
           return -1;
 
      *pp = (char *)i;
