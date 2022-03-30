@@ -1,3 +1,6 @@
+# Description
+This project has been developed alongside the Operating Systems Concepts course.
+
 # To Start Working
 - Clone this repository via command line or github. 
 - It should allow you to directly commit to the project once you start working.
